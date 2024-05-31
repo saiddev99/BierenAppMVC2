@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Add";
+}
+
+@model Bier
+
+<h2>Add Beer</h2>
+
+<form asp-action="Add" method="post">
+
+    <label asp-for="Naam"></label>
+    <span asp-validation-for="Naam">*</span>
+    <input asp-for="Naam" />
+
+    <label asp-for="Alcohol"></label>
+    <span asp-validation-for="Alcohol">*</span>
+    <input asp-for="Alcohol" />
+
+    <label asp-for="Prijs"></label>
+    <span asp-validation-for="Prijs">*</span>
+    <input asp-for="Prijs" />
+
+    <input type="submit" name="Add" value="Add" />
+
+    <div asp-validation-summary="All">Validation Errors: </div>
+</form>

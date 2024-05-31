@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "_AndereLayout";
+}
+@model List<Bier>
+
+<h2>Alle bieren</h2>
+
+
+@{
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr class="">
+                <th>ID</th>
+                <th>Biernaam</th>
+                <th>Alcohol %</th>
+                <th>Prijs</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x => item.Id) </td>
+                <td>@item.Naam </td>
+                <td>@Html.DisplayFor(x => item.Alcohol)</td>
+                <td>@Html.DisplayFor(x => item.Prijs)</td>
+                <td><a asp-action="Delete" asp-route-id="@item.Id"><img src="/img/delete.png" alt="Verwijder @item.Naam?" /></a></td>
+            </tr>
+
+            <br />
+        }
+        </tbody>
+
+    </table>
+
+
+    <form method="post" asp-action="IncreasePrice" asp-route-percent="5">
+        <input type="submit" name="increaseprice" value="Increase Price" />
+    </form>
+    <a asp-action="Search" class="btn btn-primary">Search</a>
+    <a asp-action="Add" class="btn btn-primary">Add Beer</a>
+
+    if (ViewBag.Gewist is not null)
+    {
+        <p class="lead fixed-bottom">@ViewBag.Gewist.Naam is verwijderd</p>
+    }
+}
+
+
+

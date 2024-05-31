@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Search";
+}
+@model BierSearchViewModel
+
+<h2>Search by alcohol %.</h2>
+<form asp-action="Result" method="get">
+    <label asp-for="AlcMin"></label>
+    <span asp-validation-for="AlcMin"></span>
+    <input asp-for="AlcMin"></input>
+
+    <label asp-for="AlcMax"></label>
+    <span asp-validation-for="AlcMax"></span>
+    <input asp-for="AlcMax"></input>
+
+    <input type="submit" name="name" value="Search" />
+</form>
+<br />
+@{
+    if (Model.Result is not null)
+    {
+        <ul class="list-group">
+        @foreach (var item in Model.Result)
+        {
+                <li class="list-group-item">@Html.DisplayFor(x => item.Id) @item.Naam @Html.DisplayFor(x => item.Alcohol) %</li>
+        }
+        </ul>
+    }
+}

@@ -1,0 +1,11 @@
+﻿@model float
+@{
+    string color = Model switch
+    {
+        (< 2) => "green",
+        (<= 5) => "yellowgreen",
+        (<= 8) => "orange",
+        (_) => "red"
+    };
+}
+<span style="color:@color">@Model</span>
